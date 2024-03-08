@@ -1,20 +1,21 @@
 import React from 'react';
 
 function Pokapi() {
-    const changePokemon = () => {
+    const changePokemon = async () => {
         let randomNumber = generateNumber();
 
         // appel API
         let request = `https://pokeapi.co/api/v2/pokemon/${randomNumber}`;
-        fetch(request)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                // Do something with the data
-            })
-            .catch(error => {
-                console.log(error);
-            });
+
+        let data = await fetch(request);
+        console.log(data);
+
+        let response = await data.json();
+        console.log(response);
+
+        let image = "reponse.sprite.front_default";
+
+
     };
 
     const generateNumber = (): number => {
@@ -31,14 +32,14 @@ function Pokapi() {
         <>
             <div id="wrapper">
                 <div id="image-wrapper">
-                    <img id="image" src="" alt="" />
+                    <img id="image" src="{}" alt="" />
                 </div>
             </div>
             <div id="name"></div>
             <div id="number"></div>
-            <div id="button" onClick={handleClick}>
+            <button id="button" onClick={handleClick}>
                 Get Pokemon!
-            </div>
+            </button>
         </>
     );
 }
