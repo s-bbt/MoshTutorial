@@ -15,6 +15,7 @@ function Cart() {
             </div>
             <h3>Total : {monsteraPrice * cart}€</h3>
         </div>
+
     )
 }
 
