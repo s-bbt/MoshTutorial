@@ -9,12 +9,9 @@ import EventTest from "./components/EventTest.tsx";
 function App() {
   return (
       <Fragment>
-        <NavBar />
-        <Message />
-          <HookStateTest />
+
           <Pokapi />
-          <Cart />
-          <EventTest />
+
       </Fragment>
   );
 }

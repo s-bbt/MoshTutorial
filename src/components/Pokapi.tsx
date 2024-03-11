@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function Pokapi() {
+    const [imageSrc, setImageSrc] = useState('');
+    const [pokemonName, setPokemonName] = useState('');
+    const [randomNumber, setRandomNumber] = useState('');
+
     const changePokemon = async () => {
         let randomNumber = generateNumber();
+        setRandomNumber(randomNumber);
 
         // appel API
         let request = `https://pokeapi.co/api/v2/pokemon/${randomNumber}`;
@@ -13,8 +18,10 @@ function Pokapi() {
         let response = await data.json();
         console.log(response);
 
-        let image = "reponse.sprite.front_default";
-
+        let imageSrc = response.sprites.front_default;
+        setImageSrc(imageSrc);
+        let pokemonName = response.name;
+        setPokemonName(pokemonName);
 
     };
 
@@ -32,11 +39,11 @@ function Pokapi() {
         <>
             <div id="wrapper">
                 <div id="image-wrapper">
-                    <img id="image" src="{}" alt="" />
+                    <img id="image" src={imageSrc} alt="" />
                 </div>
             </div>
-            <div id="name"></div>
-            <div id="number"></div>
+            <div id="name">Nom : {pokemonName}</div>
+            <div id="number">Numéro : {randomNumber}</div>
             <button id="button" onClick={handleClick}>
                 Get Pokemon!
             </button>
