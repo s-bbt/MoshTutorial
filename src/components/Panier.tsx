@@ -1,19 +1,30 @@
 import {useState} from "react";
 
+const tabLegumes = [
+    {id: 1, nomLeg: "Carotte", prixLeg: 5},
+    {id: 2, nomLeg: "Navet", prixLeg: 6},
+    {id: 3, nomLeg: "Epinard", prixLeg: 2}
+];
+
 function Cart() {
-    const monsteraPrice = 8
+
     const [cart, updateCart] = useState(0)
 
     return (
-        <div className='lmj-cart'>
+        <div className='cart'>
             <h2>Panier</h2>
             <div>
-                Monstera : {monsteraPrice}€
-                <button onClick={() => updateCart(cart + 1)}>
-                    Ajouter
-                </button>
+                <ul>
+                    {tabLegumes.map((legume) => (
+                        <li>{legume.nomLeg} : {legume.prixLeg} €
+                            <button onClick={() => updateCart(cart+(legume.prixLeg))}>Ajouter</button>
+                        </li>
+                    ))
+                    }
+
+                </ul>
             </div>
-            <h3>Total : {monsteraPrice * cart}€</h3>
+            <h3>Total : {cart}€</h3>
         </div>
 
     )
