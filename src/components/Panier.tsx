@@ -18,6 +18,7 @@ function Cart() {
                     {tabLegumes.map((legume) => (
                         <li>{legume.nomLeg} : {legume.prixLeg} €
                             <button onClick={() => updateCart(cart+(legume.prixLeg))}>Ajouter</button>
+                            <button onClick={()=> updateCart(cart-(legume.prixLeg))}>Retirer</button>
                         </li>
                     ))
                     }
