@@ -16,7 +16,7 @@ function Cart() {
             <div>
                 <ul>
                     {tabLegumes.map((legume) => (
-                        <li>{legume.nomLeg} : {legume.prixLeg} €
+                        <li key={legume.id}>{legume.nomLeg} : {legume.prixLeg} €
                             <button onClick={() => updateCart(cart+(legume.prixLeg))}>Ajouter</button>
                             <button onClick={()=> updateCart(cart-(legume.prixLeg))}>Retirer</button>
                         </li>
